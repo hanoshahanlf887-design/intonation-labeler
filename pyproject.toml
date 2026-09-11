@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intonation-labeler"
+version = "0.1.0"
+description = "Multimodal LLM-assisted English intonation labeling with audio and pre-extracted acoustic features."
+requires-python = ">=3.10"
+dependencies = [
+  "streamlit>=1.35",
+  "google-genai>=0.3",
+  "python-dotenv>=1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
