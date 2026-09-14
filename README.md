@@ -36,12 +36,12 @@ Demo mode runs the same local parsing, pairing, and export workflow without maki
 ## Project Structure
 
 ```text
-MTI_Project/
-├── app/                      # Streamlit UI
-├── scripts/                  # Batch entry point
+intonation-labeler/
+├── app/                       # Streamlit UI
+├── scripts/                   # Batch entry point
 ├── src/intonation_labeler/    # Shared parsing, prompt, Gemini, export, demo logic
-├── examples/                 # Synthetic schema example
-├── tests/                    # Standard-library unittest suite
+├── examples/                  # Synthetic schema example
+├── tests/                     # Standard-library unittest suite
 ├── .env.example
 ├── requirements.txt
 └── 启动网页版标注工具.bat
@@ -172,7 +172,7 @@ For live inference, each JSON file must also have a matching WAV file with the s
 
 ## Example
 
-See `examples/synthetic_001.json` for a fully synthetic schema example. It does not include original internship audio, private transcripts, or historical sample IDs.
+See `examples/synthetic_001.json` for a synthetic schema example.
 
 To run live Gemini inference with this example name, provide your own `examples/synthetic_001.wav`.
 
@@ -184,13 +184,4 @@ To run live Gemini inference with this example name, provide your own `examples/
 - LLM output should be manually reviewed.
 - Demo mode output is synthetic/mock, not model inference.
 - Model behavior may vary by model version.
-
-## Privacy / Data
-
-This repository contains no original internship audio, no private transcripts, and no API credentials. Included examples are synthetic.
-
-## Evaluation
-
-This repository focuses on the engineering workflow and reproducible demo interface. No public benchmark is claimed because the original evaluation data are not distributed with the project.
-
-The tool originated from an experimental workflow for reducing manual screening effort in English intonation annotation.
+- No public benchmark accuracy is claimed.
