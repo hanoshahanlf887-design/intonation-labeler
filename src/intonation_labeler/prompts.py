@@ -30,7 +30,26 @@ def build_prompt(transcript: str, anchors: dict[str, Any]) -> str:
 3. **位置强制要求**：语调标签必须紧跟在对应单词及其标点符号的【后面】。
 4. **文本原貌约束**：严禁改动原始文本，不得增删空格、标点，必须原样保留 '#' 停顿标识。
 5. **每个 anchor tag 均须输出标签**：必须选择【上升】【下降】【平调】之一，不得省略任何位点。
-6. **输出格式**：仅输出标注后的文本，不解释。示例：Hi,【下降】 how are you?【上升】
+6. **标签枚举**：
+   - RISING = 上升
+   - FALLING = 下降
+   - LEVEL = 平调
+7. **confidence 要求**：confidence 是你对该判断的自报信心，范围 0 到 1。它不是校准概率，不能替代人工复核。
+8. **输出格式**：只输出可解析 JSON，不要输出 Markdown，不要包裹代码块，不要添加额外解释。
+
+# JSON 输出 schema
+{{
+  "transcript": "必须与原始文本完全一致",
+  "annotated_text": "保留原文并在对应位置插入中文标签，例如：Hi,【下降】 how are you?【上升】",
+  "annotations": [
+    {{
+      "anchor_id": "tag_1",
+      "label": "RISING",
+      "confidence": 0.82,
+      "reason": "简短说明：结合听感和声学参数判断末尾上扬"
+    }}
+  ]
+}}
 
 请开始标注：
 """
